@@ -284,30 +284,3 @@ class WorldFlights(WorldMap):
         self.plot_flights(angle)
         self.plot_airplanes(angle)
         self.savefig(name, folder, title)
-
-
-if __name__ == '__main__':
-    N = 10
-    np.random.seed(0)
-    airports = {
-        str(a) : {
-            'coord' : (x,y),
-            'ratio' : 1
-        }
-        for (a,x,y) in zip(
-            np.random.rand(N),
-            360*np.random.rand(N) - 180,
-            180*np.random.rand(N) - 90,
-        )
-    }
-
-    flights = {}
-    for _ in range(N):
-        a1 = np.random.choice(list(airports))
-        a2 = np.random.choice(list(airports))
-        if a1 != a2:
-            flights[a1, a2] = {'ratio' : 1}
-
-
-    WF = WorldFlights(airports=airports, flights=flights)
-    WF.plot()

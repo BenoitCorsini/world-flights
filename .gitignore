@@ -1,5 +1,7 @@
 # folders
 __pycache__/
+frames/
 
 # figures
 map.png
+world.avi

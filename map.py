@@ -1,9 +1,9 @@
 import os
 import os.path as osp
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Polygon, Rectangle
 import shapefile
-import numpy as np
 
 from config import PARAMS
 

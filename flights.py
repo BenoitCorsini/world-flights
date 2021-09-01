@@ -1,7 +1,7 @@
 import os
 import os.path as osp
-from matplotlib.patches import Ellipse
 import numpy as np
+from matplotlib.patches import Ellipse
 
 from map import WorldMap
 

@@ -14,10 +14,10 @@ class MapLoader(object):
                  shapes_folder='ne_110m_land',
                  locations_folder='ne_110m_populated_places',
                  routes_file='1000 Largest City Pairs by Number of Passengers.xlsx'):
-    	'''
-    	The 'MapLoader' class is useful to generate the airports and flights from the given data.
-    	For other types or sources of data, only this code can be adapted.
-    	'''
+        '''
+        The 'MapLoader' class is useful to generate the airports and flights from the given data.
+        For other types or sources of data, only this code can be adapted.
+        '''
         self.data_folder = data_folder
         self.shapes_folder = shapes_folder
         self.locations_folder = locations_folder
@@ -30,9 +30,9 @@ class MapLoader(object):
         self.__routes__()
 
     def __load__(self, folder, extensions=['cpg', 'dbf', 'prj', 'shp', 'shx']):
-    	'''
-    	Loads a shapefile object.
-    	'''
+        '''
+        Loads a shapefile object.
+        '''
         kwargs = {}
         for extension in extensions:
             extension_file = osp.join(self.data_folder, folder, folder + '.' + extension)
@@ -42,9 +42,9 @@ class MapLoader(object):
         return Reader(**kwargs)
 
     def __locations__(self):
-    	'''
-    	Transforms the 'locations_map' into a dictionary.
-    	'''
+        '''
+        Transforms the 'locations_map' into a dictionary.
+        '''
         self.locations = {}
         for record in self.locations_map.records():
             self.locations[record.NAME.lower()] = {
@@ -52,9 +52,9 @@ class MapLoader(object):
             }
 
     def __routes__(self, metric='Passenger Miles'):
-    	'''
-    	Transforms the 'routes_df' into a dictionary.
-    	'''
+        '''
+        Transforms the 'routes_df' into a dictionary.
+        '''
         self.routes = {}
         self.max_metric = 0
         for _, line in self.routes_df.iterrows():
@@ -75,15 +75,15 @@ class MapLoader(object):
 
     @staticmethod
     def scale(value):
-    	'''
-    	Rescaling the values of the metric, for aesthetic reasons.
-    	'''
+        '''
+        Rescaling the values of the metric, for aesthetic reasons.
+        '''
         return value **.5
 
     def to_shapes(self):
-    	'''
-    	Transforms a class instance into its shapes, used as input of the class 'WorldMap'.
-    	'''
+        '''
+        Transforms a class instance into its shapes, used as input of the class 'WorldMap'.
+        '''
         shapes = []
         for shape in self.shapes_map.shapes():
             shapes.append(shape.points)
@@ -91,9 +91,9 @@ class MapLoader(object):
         return shapes
 
     def to_airports(self):
-    	'''
-    	Transforms a class instance into its airports, used as input of the class 'WorldFlights'.
-    	'''
+        '''
+        Transforms a class instance into its airports, used as input of the class 'WorldFlights'.
+        '''
         airports = {}
         for cities, infos in self.routes.items():
             ratio = self.scale(infos['metric'])/self.max_metric
@@ -109,9 +109,9 @@ class MapLoader(object):
         return airports
 
     def to_flights(self):
-    	'''
-    	Transforms a class instance into its flights, used as input of the class 'WorldFlights'.
-    	'''
+        '''
+        Transforms a class instance into its flights, used as input of the class 'WorldFlights'.
+        '''
         flights = {}
         for cities, infos in self.routes.items():
             flights[cities] = {

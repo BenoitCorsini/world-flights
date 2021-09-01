@@ -10,19 +10,14 @@ from config import PARAMS
 
 class WorldMap(object):
 
-    def __init__(self, map_name='globe', params=PARAMS):
+    def __init__(self, shapes=[], params=PARAMS):
         '''
         The 'WorldMap' class is useful in constructing a 3D figure of the world map
         and contains basic function to normalize and project map coordinates.  
         '''
-        self.map_name = map_name
+        self.shapes = shapes
         self.params = params
 
-        self.world = Reader(
-            shp=open(osp.join(self.map_name, self.map_name + '.shp'), 'rb'),
-            shx=open(osp.join(self.map_name, self.map_name + '.shx'), 'rb'),
-            prj=open(osp.join(self.map_name, self.map_name + '.prj'), 'rb'),
-        )
         self.globe = None # a globe useful to clip the figures
 
     @staticmethod
@@ -109,9 +104,9 @@ class WorldMap(object):
         )
         self.ax.add_patch(self.globe)
 
-        for shape in self.world.shapes():
+        for shape in self.shapes:
             for turn in [-1, 0, 1]: # to cover for the boundary problems
-                points, unseen = zip(*[self.project(point, angle, turn) for point in shape.points])
+                points, unseen = zip(*[self.project(point, angle, turn) for point in shape])
                 if not all(unseen):
                     # the border of the land
                     self.ax.add_patch(Polygon(

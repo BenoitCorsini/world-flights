@@ -1,14 +1,12 @@
 PARAMS = {
     'figure' : {
         'size' : 10,
-        'extra_space' : 1,
-        'font_dist' : 0.3,
-        'font_size' : 25,
-        'font_colour' : 'black',
+        'extra_space' : 0.7,
+        'background' : 'white',
         'away' : 10,
     },
     'text' : {
-        'x' : 0.6,
+        'x' : 0.3,
         'y' : 0.3,
         'fontsize' : 25,
         'colour' : 'black',
@@ -22,14 +20,15 @@ PARAMS = {
         'border_colour' : 'darkgreen',
     },
     'shade' : {
-        'land_colour' : 'bisque',
-        'water_colour' : 'linen',
+        'land_colour' : 'forestgreen',
+        'water_colour' : 'aquamarine',
         'angle' : 170,
         'scale' : 0.7,
         'ratio' : 0.3,
         'rotation' : -75,
         'x_pos' : 0.9,
         'y_pos' : 0.1,
+        'alpha' : 0.1,
     },
     'airports' : {
         'colour' : 'royalblue',
@@ -53,6 +52,7 @@ PARAMS = {
         'border_colour' : 'darkred',
     },
     'zorder' : {
+        'background' : -2,
         'water' : 0.5,
         'land' : 1,
         'land_border' : 0.9,

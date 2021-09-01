@@ -78,7 +78,7 @@ class MapLoader(object):
         '''
         Rescaling the values of the metric, for aesthetic reasons.
         '''
-        return value **.5
+        return value
 
     def to_shapes(self):
         '''

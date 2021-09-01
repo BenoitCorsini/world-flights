@@ -83,8 +83,8 @@ class WorldAnimation(WorldFlights):
              frames_dir='frames',
              fps=20,
              title='',
-             n_angles=9,
-             n_rotations=1,
+             n_angles=180,
+             n_rotations=5,
              plot_airports=True,
              plot_flights=True,
              plot_airplanes=True):
@@ -101,4 +101,4 @@ class WorldAnimation(WorldFlights):
         print('Frames done, combining them...')
 
         video_file = self.frames_to_video(name, folder, frames_dir, fps)
-        print(f'Video ready at \'{video_file}\'')
+        print(f'Animation available at \'{video_file}\'')

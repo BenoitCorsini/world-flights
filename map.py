@@ -163,9 +163,9 @@ class WorldMap(object):
             transform=transform,
             lw=0,
         ))
-        for shape in self.world.shapes():
+        for shape in self.shapes:
             for turn in [-1, 0, 1]: # to cover for the boundary problems
-                points, unseen = zip(*[self.project(point, angle, turn, flip=True, away=1) for point in shape.points])
+                points, unseen = zip(*[self.project(point, angle, turn, flip=True, away=1) for point in shape])
                 if not all(unseen):
                     self.ax.add_patch(Polygon(
                         xy=points,

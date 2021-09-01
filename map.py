@@ -3,7 +3,7 @@ import os.path as osp
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Polygon, Rectangle
-import shapefile
+from shapefile import Reader
 
 from config import PARAMS
 
@@ -18,7 +18,7 @@ class WorldMap(object):
         self.map_name = map_name
         self.params = params
 
-        self.world = shapefile.Reader(
+        self.world = Reader(
             shp=open(osp.join(self.map_name, self.map_name + '.shp'), 'rb'),
             shx=open(osp.join(self.map_name, self.map_name + '.shx'), 'rb'),
             prj=open(osp.join(self.map_name, self.map_name + '.prj'), 'rb'),
@@ -217,7 +217,3 @@ class WorldMap(object):
         self.set_figure()
         self.plot_globe(angle)
         self.savefig(name, folder, title)
-
-if __name__ == '__main__':
-    WM = WorldMap()
-    WM.plot()

@@ -1,12 +1,7 @@
 import os
 import os.path as osp
 import cv2
-import shutil
-import matplotlib.pyplot as plt
-
-import numpy as np
-import itertools
-from config import PARAMS
+from shutil import rmtree
 
 from flights import WorldFlights
 
@@ -32,11 +27,11 @@ class WorldAnimation(WorldFlights):
         Creates the frames for the animation.
         '''
         if osp.exists(frames_dir):
-            shutil.rmtree(frames_dir)
+            rmtree(frames_dir)
         os.makedirs(frames_dir)
 
         index = 0
-        shift = np.random.randint(9*2021) # to skew the starting point of the airplanes
+        shift = 9*2021 # to skew the starting point of the airplanes
         for index_rotation in range(n_rotations):
             for index_angle in range(n_angles):
                 angle = index_angle*360/n_angles
@@ -107,30 +102,3 @@ class WorldAnimation(WorldFlights):
 
         video_file = self.frames_to_video(name, folder, frames_dir, fps)
         print(f'Video ready at \'{video_file}\'')
-
-
-if __name__ == '__main__':
-    N = 10
-    np.random.seed(0)
-    airports = {
-        str(a) : {
-            'coord' : (x,y),
-            'ratio' : 1
-        }
-        for (a,x,y) in zip(
-            np.random.rand(N),
-            360*np.random.rand(N) - 180,
-            180*np.random.rand(N) - 90,
-        )
-    }
-
-    flights = {}
-    for _ in range(N):
-        a1 = np.random.choice(list(airports))
-        a2 = np.random.choice(list(airports))
-        if a1 != a2:
-            flights[a1, a2] = {'ratio' : 1}
-
-
-    Anim = WorldAnimation(airports=airports, flights=flights)
-    Anim.make()

@@ -7,7 +7,7 @@ from shapefile import Reader
 from map import WorldMap
 
 
-class MapDataset(object):
+class MapLoader(object):
 
     def __init__(self,
                  data_folder='data',
@@ -15,7 +15,7 @@ class MapDataset(object):
                  locations_folder='ne_110m_populated_places',
                  routes_file='1000 Largest City Pairs by Number of Passengers.xlsx'):
     	'''
-    	The 'MapDataset' class is useful to generate the airports and flights from the given data.
+    	The 'MapLoader' class is useful to generate the airports and flights from the given data.
     	For other types or sources of data, only this code can be adapted.
     	'''
         self.data_folder = data_folder

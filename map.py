@@ -3,7 +3,6 @@ import os.path as osp
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Polygon, Rectangle
-from shapefile import Reader
 
 from config import PARAMS
 
@@ -13,7 +12,19 @@ class WorldMap(object):
     def __init__(self, shapes=[], params=PARAMS):
         '''
         The 'WorldMap' class is useful in constructing a 3D figure of the world map
-        and contains basic function to normalize and project map coordinates.  
+        and contains basic function to normalize and project map coordinates.
+
+        The list 'shapes' is a list of list of coordinates, as represented below
+
+        #################################################################################
+        ##                                                                             ##
+        ##  shapes = [                                                                 ##
+        ##    points_1 = [(longitude_1, latitude_1), (longitude_2, latitude_2), ...],  ##
+        ##    points_2 = [(longitude_1, latitude_1), (longitude_2, latitude_2), ...],  ##
+        ##    ...                                                                      ##
+        ##  ]                                                                          ##
+        ##                                                                             ##
+        #################################################################################
         '''
         self.shapes = shapes
         self.params = params

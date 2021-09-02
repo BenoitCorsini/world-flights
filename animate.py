@@ -55,12 +55,12 @@ class WorldAnimation(WorldFlights):
         '''
         if not osp.exists(folder):
             os.makedirs(folder)
+        video_file = osp.join(folder, name + '.avi')
 
         frames = [osp.join(frames_dir, file) for file in sorted(os.listdir(frames_dir))]
 
         h, w, _ = cv2.imread(frames[0]).shape
 
-        video_file = osp.join(folder, name + '.avi')
         video = cv2.VideoWriter(
             video_file,
             cv2.VideoWriter_fourcc(*'XVID'),
@@ -95,7 +95,7 @@ class WorldAnimation(WorldFlights):
             raise Exception('Too many frames for the video! You really want to see that earth spin, don\'t ya?')
 
         print(f'Number of frames to be made: {n_angles*n_rotations}')
-        print(f'* check-out the folder \'{frames_dir}/\' to see the frames being made *')
+        print(f'* check out the folder \'{frames_dir}/\' to see the frames being made *')
 
         self.make_frames(frames_dir, title, n_angles, n_rotations, plot_airports, plot_flights, plot_airplanes)
         print('Frames done, combining them...')

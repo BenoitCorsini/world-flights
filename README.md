@@ -12,11 +12,12 @@ The library requirements for this code can be found in `requirements.txt`. To in
 pip install -r requirements.txt
 ```
 In its current form, this project also uses data with restricted access.
-In order for the code to properly run, download [this file](https://data.world/garyhoov/us-airline-route-segments-2015/workspace/file?filename=1000+Largest+City+Pairs+by+Number+of+Passengers.xlsx) into the `data/` folder.
-Once the required libraries are installed and the previous file is downloaded, run the following:
+In order for the code to properly run, download [this file](https://data.world/garyhoov/us-airline-route-segments-2015/workspace/file?filename=1000+Largest+City+Pairs+by+Number+of+Passengers.xlsx) directly into the `data/` folder.
+Once the required libraries are installed and the previous file is downloaded, you can run the following line:
 ```sh
 python main.py
 ```
+This should take less then 5 minutes and produce a video.
 
 ### Organization of the code
 
@@ -31,9 +32,9 @@ It also has a feature to represent _airplanes_ as moving points on the routes de
 
 `config.py` is an extra file containing all the configuration parameters of this model and `data.py` is used to load the datasets and output them in the desired format.
 
-### The data
+## Datasets
 
-To construct the world map and to represent the flights, two dataset sources were used.
+To construct the world map and represent the flights, two dataset sources were used.
 
 - The website [Natural Earth](https://www.naturalearthdata.com/) was used to access the shapes of the continents and the locations of the airports.
 - The website [data.world](https://data.world/) was used to access the data on the flights. More precisely, the flights data come from the [US Airline Route Segments 2015](https://data.world/garyhoov/us-airline-route-segments-2015) dataset by [Gary Hoover](https://data.world/garyhoov).
